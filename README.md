@@ -13,6 +13,8 @@ Supported platforms:
       * Intel x86\_64
       * ARMv7-A (e.g. Raspberry Pi 2)
       * ARMv8-A (e.g. Raspberry Pi 3)
+  - Alpine Linux
+      * Intel x86\_64
   - Windows
       * Intel i686
       * Intel x86\_64

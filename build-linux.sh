@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -xeu
 
 cd $(dirname $0)
 BASE_DIR=$(pwd)
@@ -13,8 +13,9 @@ then
 fi
 
 : ${ARCH?}
+OS=${OS:-linux}
 
-TARGET=ffmpeg-$FFMPEG_VERSION-audio-linux-$ARCH
+TARGET=ffmpeg-$FFMPEG_VERSION-audio-$OS-$ARCH
 
 case $ARCH in
 i686)
@@ -23,8 +24,8 @@ i686)
 arm*)
     FFMPEG_CONFIGURE_FLAGS+=(
         --enable-cross-compile
-        --cross-prefix=arm-linux-gnueabihf-
-        --target-os=linux
+        --cross-prefix=arm-$OS-gnueabihf-
+        --target-os=$OS
         --arch=arm
     )
     case $ARCH in
