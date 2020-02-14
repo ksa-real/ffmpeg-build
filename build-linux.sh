@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -xeu
 
 cd $(dirname $0)
 BASE_DIR=$(pwd)
