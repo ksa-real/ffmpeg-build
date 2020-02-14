@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch:
-          - x86_64
+        arch: [x86_64]
     env:
       ARCH: ${{ matrix.arch }}
     steps:
@@ -19,11 +18,11 @@ jobs:
         run: |
           docker run -v $GITHUB_WORKSPACE:/project -w /project -e ARCH=$ARCH alpine:latest /bin/sh ./build-alpine.sh
           mkdir artifacts
-          mv ffmpeg-*-audio-linux-* artifacts
+          mv ffmpeg-*-audio-alpine-* artifacts
       - name: Archive production artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: ffmpeg-linux-${{ env.ARCH }}
+          name: ffmpeg-alpine-${{ env.ARCH }}
           path: artifacts/
 
   release:
